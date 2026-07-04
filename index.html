@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beni Affettin Mi? ❤️</title>
+    <!-- Importing Outfit for clean layout and Pacifico for handwritten romantic look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Container for Interactive Floating Hearts -->
+    <div class="floating-hearts-container" id="hearts-container"></div>
+
+    <div class="app-container">
+        <!-- Main Card Question -->
+        <div class="card" id="question-card">
+            <div class="card-icon" id="card-emoji">🥺</div>
+            <h1 class="title">Beni Affettin mi?</h1>
+            <p class="subtitle">Lütfen hayır deme, seni çok seviyorum... 💖</p>
+            
+            <div class="button-group">
+                <button class="btn btn-yes" id="evet-btn">Evet</button>
+                <button class="btn btn-no" id="hayir-btn">Hayır</button>
+            </div>
+        </div>
+
+        <!-- Success Celebration Screen -->
+        <div class="card success-card hidden" id="success-card">
+            <div class="celebration-emoji">🎉❤️</div>
+            <h1 class="title celebration-title">Seni Çok Seviyorum!</h1>
+            <p class="subtitle">Beni affettiğin için çok mutluyum, iyi ki varsın... 🥰</p>
+            <div class="heart-box">
+                <div class="big-heart">❤️</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

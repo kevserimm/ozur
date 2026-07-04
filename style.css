@@ -1,0 +1,272 @@
+:root {
+    --primary: #ff4d6d;
+    --primary-hover: #ff758f;
+    --secondary: #6c757d;
+    --bg-start: #ffeaee;
+    --bg-end: #f0c6d5;
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --border-color: rgba(255, 255, 255, 0.6);
+    --text-main: #3d1c25;
+    --text-sub: #75505b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    color: var(--text-main);
+}
+
+/* Floating Hearts Background */
+.floating-hearts-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0.6;
+    animation: floatUp 6s linear infinite;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-105vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Container & Cards */
+.app-container {
+    z-index: 10;
+    width: 90%;
+    max-width: 450px;
+    perspective: 1000px;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(255, 105, 180, 0.15);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotateX(0deg);
+}
+
+.card-icon {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+/* Button Styling */
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 120px;
+    position: relative;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Outfit', sans-serif;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #ff4d6d 0%, #ff758f 100%);
+    color: white;
+    z-index: 5;
+}
+
+.btn-yes:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 20px rgba(255, 77, 109, 0.3);
+}
+
+.btn-yes:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    color: #495057;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 6;
+}
+
+.btn-no.dodging {
+    position: fixed;
+    z-index: 1000;
+    /* Soft transition for a cute sliding escape effect */
+    transition: left 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Success Card */
+.success-card {
+    transform: scale(0.9);
+    opacity: 0;
+    display: none;
+}
+
+.success-card.show {
+    display: block;
+    animation: scaleUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.celebration-emoji {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: heartBeat 1.2s infinite ease-in-out;
+}
+
+.celebration-title {
+    color: #ff2a51;
+}
+
+.heart-box {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.big-heart {
+    font-size: 6rem;
+    animation: heartBeat 0.8s infinite ease-in-out;
+    filter: drop-shadow(0 10px 20px rgba(255, 42, 81, 0.3));
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Celebration Particles & Flash */
+.celebration-particle {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform, opacity;
+}
+
+@keyframes shootParticle {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(var(--tscale)) rotate(var(--trotate));
+        opacity: 0;
+    }
+}
+
+.love-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 77, 109, 0.45);
+    z-index: 9998;
+    pointer-events: none;
+    animation: flashFade 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes flashFade {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+    .title {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+    .btn {
+        padding: 12px 26px;
+        font-size: 1rem;
+    }
+}
